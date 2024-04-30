@@ -1,0 +1,21 @@
+# 忽略临时文件和目录
+*~
+*.swp
+*.tmp
+*.bak
+*.pyc
+*.pyo
+*.cache
+__pycache__/
+
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略IDE生成的文件
+.vscode/
+.idea/
+
+# 忽略Jupyter Notebook生成的文件
+.ipynb_checkpoints/
+
