@@ -1,0 +1,8 @@
+2024-05-07 08:59:32.297 | DEBUG    | __main__:<module>:22 - This is a debug message.
+2024-05-07 08:59:32.298 | INFO     | __main__:<module>:23 - This is an info message.
+2024-05-07 08:59:32.298 | WARNING  | __main__:<module>:24 - This is a warning message.
+2024-05-07 08:59:32.298 | ERROR    | __main__:<module>:25 - This is an error message.
+2024-05-07 12:32:22.777 | DEBUG    | __main__:<module>:22 - This is a debug message.
+2024-05-07 12:32:22.778 | INFO     | __main__:<module>:23 - This is an info message.
+2024-05-07 12:32:22.778 | WARNING  | __main__:<module>:24 - This is a warning message.
+2024-05-07 12:32:22.778 | ERROR    | __main__:<module>:25 - This is an error message.
