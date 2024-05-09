@@ -47,7 +47,7 @@ class PDFParser(Parser):
 
                 if raw_txt:
                     raw_txt_lines = raw_txt.splitlines()
-                    clean_txt_lines = [line for line in raw_txt_lines if line.strip()]
+                    clean_txt_lines = [line.strip() for line in raw_txt_lines if line.strip()]
                     clean_raw_txt = "\n".join(clean_txt_lines)
 
                     txt_content = Content(ContentType.TEXT, original=clean_raw_txt)

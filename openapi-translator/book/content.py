@@ -45,7 +45,7 @@ class TableContent(Content):
         if len(data) != len(df) or len(data[0]) != len(df.columns):
             raise ValueError("The number of rows and columns in the extracted table data and DataFrame object do not match.")
 
-        super().__init__(ContentType.TEXT, df, translation)
+        super().__init__(ContentType.TABLE, df, translation)
 
     def set_translation(self, translation, status):
         try:
@@ -54,10 +54,9 @@ class TableContent(Content):
 
             LOG.debug(translation)
 
-            table_data = [row.strip().split() for row in translation.strip().split("\n")]
+            table_data = [row.strip().split(',') for row in translation.strip().split("\n")]
             LOG.debug(table_data)
-            translate_df = pd.DataFrame(table_data[1:], table_data[0])
-            LOG.debug(translate_df)
+            translate_df = pd.DataFrame(table_data[1:], columns=table_data[0])
 
             self.translation = translate_df
             self.status = status
@@ -67,17 +66,17 @@ class TableContent(Content):
             self.status = False
 
     def __str__(self):
-        return self.original.to_string(Headers=False, index=False)
+        return self.original.to_string(header=False, index=False)
 
     def iter_items(self, translated=False):
-        target_df = self.original if translated else self.original
+        target_df = self.translation if translated else self.original
         for row_idx, row in target_df.iterrows():
             for col_idx, col in enumerate(row):
                 yield row_idx, col_idx, col
 
     def update_item(self, row_idx, col_idx, value, translated=False):
-        target_df = self.original if translated else self.original
+        target_df = self.translation if translated else self.original
         target_df.at[row_idx, col_idx] = value
 
     def get_original_as_str(self):
-        return self.original.to_string(Headers=False, index=False)
+        return self.original.to_string(header=False, index=False)

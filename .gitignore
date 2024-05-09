@@ -19,3 +19,6 @@ Thumbs.db
 # 忽略Jupyter Notebook生成的文件
 .ipynb_checkpoints/
 data/*
+*.log
+log/
+

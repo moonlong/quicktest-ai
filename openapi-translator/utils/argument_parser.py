@@ -19,13 +19,15 @@ class ArgumentParser:
                                  default='test',
                                  help="The API key for OpenAIModel")
 
-        self.parser.add_argument("--book", type=str, required=True, help="target book")
-        self.parser.add_argument("--lang", type=str, default="zh", help="target language")
+        self.parser.add_argument("--book", type=str, help="target book")
+        self.parser.add_argument("--lang", type=str, default="chinese", help="target language")
         self.parser.add_argument("--pages", type=int, help="target book pages")
         self.parser.add_argument("--file_format", type=str,
                                  choices=['PDF', 'Markdown'],
                                  default='Markdown',
                                  help="target file format")
+        self.parser.add_argument("--server", type=int, help="run server")
+
 
     def parse_args(self):
         args = self.parser.parse_args()
