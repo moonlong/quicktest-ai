@@ -4,7 +4,7 @@ import os
 import time
 import openai
 
-from .model import Model
+from model import Model
 from utils.logger import LOG
 from openai import OpenAI
 
