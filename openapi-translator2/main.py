@@ -22,7 +22,7 @@ if __name__ == '__main__':
                                           config.output_file_format,
                                           config.source_language,
                                           config.target_language,
-                                          pages=None)
+                                          pages=3)
 
 
 

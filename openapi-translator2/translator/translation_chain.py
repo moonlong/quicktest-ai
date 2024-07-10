@@ -1,6 +1,7 @@
 from langchain_openai import ChatOpenAI
 # from langchain.chains import LLMChain
 from langchain_core.output_parsers import StrOutputParser
+from langchain.globals import set_verbose, set_debug
 
 from utils import LOG
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
@@ -8,6 +9,10 @@ from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplat
 
 class TranslationChain:
     def __init__(self, model_name="gpt-3.5-turbo", verbose=True):
+        # debug
+        set_debug(verbose)
+        set_verbose(verbose)
+
         # 翻译任务指令始终由 System 角色承担
         template = (
             """You are a translation expert, proficient in various languages. \n
@@ -15,7 +20,7 @@ class TranslationChain:
         )
         system_message_prompt = SystemMessagePromptTemplate.from_template(template)
 
-        # 待翻译文本由 Human 角色输入
+        # 待翻译文本由 HumGan 角色输入
         human_template = "{text}"
         human_message_prompt = HumanMessagePromptTemplate.from_template(human_template)
 
@@ -35,8 +40,7 @@ class TranslationChain:
         try:
             # result = self.chain.run({
             result = self.chain.invoke({
-                "text": text,
-                "source_language": source_language,
+                "text": text, "source_language": source_language,
                 "target_language": target_language,
             })
         except Exception as e:
